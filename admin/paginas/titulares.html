@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+     <!-- agregados-->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+      <style>
+        
+        .modal-header{
+            background-color: #328eff ;
+            color: white;
+        }
+
+        .modal-body > .text-center> img{
+            width: 30%;
+        }
+      </style>
+
+    <title>Titulares</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">CHUPAMARCA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../admin">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../paginas/compra">Compradores</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Vendedores
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../paginas/titulares">Titular</a>
+              <a class="dropdown-item" href="../paginas/secundarios">Secundario</a>
+              <a class="dropdown-item" href="#">Tercero</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center"><a href="../admin.html"><i class="fas fa-step-backward tex"></i></a>  Lista de Titulares <a href="../paginas/compra.html"><i class="fas fa-step-forward"></i></a></h3>
+            </div>
+        </div>
+        <button type="button" class="m-3 btn btn-success btn-sm" data-toggle="modal" data-target="#registrar">
+            Registrar
+          </button>
+          Buscar: <input type="text" placeholder="Buscar por DNI" onkeyup="Buscar()" id="buscar" >
+          <button class="btn btn-secondary btn-sm"><i class="fas fa-search"></i></button>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead class="thead-dark">
+                      <tr> 
+                        <th scope="col">#ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">correo</th>
+                        <th scope="col">celular</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Preventa Tikets</th>
+                        <th scope="col">Tikets Vendidos</th>
+                        <th scope="col">Ganancia Generada</th>
+                        <th scope="col"><i class="fas fa-cog"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody id="tabla">
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="registrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Registrar Vendedor
+        </p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <img src="../../img/icons/p-afiliado.png">
+          <p>
+            <strong>Afilia </strong>a nuevos clientes y aumenta tu progreso
+          </p>
+        </div>
+        <hr>
+        <div class="row col-sm-12 p-0 m-0">
+          <div class="col-sm-6 m-0">
+            <label>Nombres</label>
+            <input type="text" id="nombre" class="form-control" autocomplete="off">
+          </div>
+          <div class="col-sm-6 m-0">
+            <label>Apellidos</label>
+            <input type="text" id="apellido" class="form-control" autocomplete="off">
+          </div>
+        </div>
+        <div class="row col-sm-12 p-0 m-0">
+          <div class="col-sm-6 m-0">
+            <label>DNI</label>
+            <input type="number" id="dni" onkeypress="return validni(this, 8);" class="form-control" autocomplete="off">
+          </div>
+          <div class="col-sm-6 m-0">
+            <label>Teléfono</label>
+            <input type="number" id="celular" onkeypress="return valicelular(this, 9);" class="form-control" autocomplete="off">
+          </div>
+        </div>
+        <div class="row col-sm-12 p-0 m-0">
+          <div class="col-sm-6 m-0">
+            <label>Correo</label>
+            <input type="email" id="correo" class="form-control" autocomplete="off">
+          </div>
+          <div class="col-sm-6 m-0">
+            <label>Contraseña</label>
+            <input type="text" id="pass" value="123" class="form-control" autocomplete="off" disabled>
+          </div>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn btn-primary waves-effect waves-light" onclick="registrar()">Guardar
+          <i class="fa fa-paper-plane ml-1"></i>
+        </a>
+        <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="enombre" placeholder="Nombres" class="form-control my-3" autocomplete="off">
+          <input type="text" id="eapellido" placeholder="Apellidos" class="form-control my-3" autocomplete="off">
+          <input type="number" id="ecelular" onkeypress="return valicelular(this, 9);" placeholder="Celular" class="form-control my-3" autocomplete="off">
+          <input type="number" id="edni" onkeypress="return validni(this, 8);" placeholder="DNI" class="form-control my-3" autocomplete="off">
+          <input type="email" id="ecorreo" placeholder="Correo" class="form-control my-3" autocomplete="off">
+          <input type="password" id="epass" placeholder="Contraseña" class="form-control my-3" autocomplete="off">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-warning" onclick="actulizar()" >Actulizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="../../js/conexionfirebase.js"></script>
+    <script src="../js/admin.js"></script>
+  </body>
+</html>

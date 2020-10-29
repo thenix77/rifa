@@ -1,0 +1,35 @@
+    /*  insert
+    await this.db.collection('webconfig').doc().set({
+                dato: 1,
+                nombre:'yo'
+    })
+      */
+     
+      /*select 
+    const data = await this.db.collection('webconfig').get()        
+          
+        console.log(data)
+
+        for(const doc of data.docs){
+            console.log(doc.id, '=>', doc.data());
+        }
+    */
+       /* actualizar por campo
+        await this.db.collection('webconfig').doc('1rSYdrhbdZjYdxEo60Yh')
+            .update({
+                   dato:'he actualizado'     
+                                })
+        */
+        
+        //buscar un dato * id
+       /*  const data = await this.db.collection('webconfig')
+                            .doc('1rSYdrhbdZjYdxEo60Yh').get()
+
+        this.setState({
+            imagen1: data.data()['image1'],
+            imagen2: data.data()['image2'],
+            imagen3: data.data()['image3'],
+            dato: data.data()['dato']
+        })*/
+
+        

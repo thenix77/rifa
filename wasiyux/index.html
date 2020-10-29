@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Configuracion</title>
+    <link rel="shortcut icon" href="./src/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./src/style/navbar.css">
+    <link rel="stylesheet" href="./src/style/inicio.css">
+
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+
+
+    <!-- Load React. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src='https://unpkg.com/react@16.3.1/umd/react.production.min.js'></script>
+  <script src='https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js'></script>
+  <script src='https://unpkg.com/react-router@5.0.0/umd/react-router.min.js'></script>
+  <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+  <script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+
+  
+  <!-- lib -->
+  <script src="./src/lib/conexion.js" type='text/babel'></script>
+  <script src='./src/lib/authenticador.js' type='text/babel'></script>
+  <script src="./src/lib/routerProtect.js" type='text/babel'></script>
+    
+  <!-- Load our React component. -->
+  <script src="./src/components/navbar.js" type="text/babel"></script>
+  <script src="./src/components/tarjetas.js" type="text/babel"></script>
+  
+  <!-- Load our React Pages -->
+  <script src="./src/pages/logout.js" type='text/babel'></script>
+  <script src="./src/pages/default.js" type="text/babel"></script>
+  <script src="./src/pages/agricultura.js" type='text/babel'></script>
+  <script src='./src/pages/ganaderia.js' type="text/babel"></script>
+  <script src="./src/pages/mineria.js" type='text/babel'></script>
+  <script src="./src/pages/evento.js" type='text/babel'></script>
+  <script src="./src/pages/inicio.js" type='text/babel'></script>
+
+    <!-- base -->
+  <script src="./src/app.js" type='text/babel'></script>
+  <script src="./src/index.js" type='text/babel'></script>
+    
+
+  </body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="principal.css">
+
+    <title>Pagina Principal</title>
+    <link rel="icon" type="" href="img/icons/simbolo.png">
+  </head>
+  <body class="grey">
+    <div class="container-fluid" id="navp">
+      <div class="row col-12 m-0 p-0" id="row-nav_principal">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light col-12" id="nav-principal">
+          <a class="navbar-brand" href="#"><img src="img/icons/simbolo.png" id="nav-principal_img" alt="">
+            <strong id="nav-principal_titulo">CHUPAMARCA</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav-principal_items">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" data-toggle="modal" data-target="#Afiliar" style="cursor: pointer;">
+                  <strong>Afiliar</strong>
+              </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" data-toggle="modal" data-target="#Tikets" style="cursor: pointer;">
+                  <strong>Tikets</strong>
+              </a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <stron><span class="text-white pr-3" id="nom"></span></stron>
+              <br><br>
+              <button type="button" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#perfil" onclick="perfilDatos()">
+                <i class="fas fa-user-cog"></i>
+              </button>
+              <a class="btn btn-danger btn-sm my-2 my-sm-0" onclick="cerrar()"> <i class="fas fa-sign-out-alt"></i></a>
+            </form>
+          </div>
+        </nav>
+      </div>
+      <!-- Modal Registrar Afiliados -->
+      <div class="modal fade" id="Afiliar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading lead"><strong>Registrar Afiliado</strong>
+              </p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">×</span>
+              </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+              <div class="text-center">
+                <img src="../../img/icons/p-afiliado.png">
+                <p>
+                  <strong>Afilia </strong>a nuevos clientes y aumenta tu progreso
+                </p>
+              </div>
+              <hr>
+              <div class="row col-sm-12 p-0 m-0">
+                <div class="col-sm-6 m-0">
+                  <label>Nombres</label>
+                  <input type="text" id="nombre" class="form-control" autocomplete="off">
+                </div>
+                <div class="col-sm-6 m-0">
+                  <label>Apellidos</label>
+                  <input type="text" id="apellido" class="form-control" autocomplete="off">
+                </div>
+              </div>
+              <div class="row col-sm-12 p-0 m-0">
+                <div class="col-sm-6 m-0">
+                  <label>DNI</label>
+                  <input type="number" id="dni" onkeypress="return validni(this, 8);" class="form-control" autocomplete="off">
+                </div>
+                <div class="col-sm-6 m-0">
+                  <label>Celular</label>
+                  <input type="number" id="celular" onkeypress="return valicelular(this, 9);" class="form-control" autocomplete="off">
+                </div>
+              </div>
+              <div class="row col-sm-12 p-0 m-0">
+                <div class="col-sm-6 m-0">
+                  <label>Correo</label>
+                  <input type="email" id="correo" class="form-control" autocomplete="off">
+                </div>
+                <div class="col-sm-6 m-0">
+                  <label>Contraseña</label>
+                  <input type="text" id="pass" class="form-control" autocomplete="off" value="123" disabled>
+                </div>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+              <a type="button" class="btn btn-primary waves-effect waves-light" onclick="registrar()" id="registrar" >Guardar
+                <i class="fa fa-paper-plane ml-1"></i>
+              </a>
+              <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal generar Tikets-->
+      <div class="modal fade" id="Tikets" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading lead"><strong>Generar Tiket</strong>
+              </p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">×</span>
+              </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+              <div class="text-center">
+                <img src="../../img/icons/p-tiket.png">
+                <p>
+                  <strong>Genera </strong>nuevos tikets y aumenta tu progreso
+                </p>
+              </div>
+              <hr>
+              <div class="row col-sm-12 p-0 m-0">
+                <div class="col-sm-12 m-0">
+                  <label for=""><i class="fas fa-ticket-alt"></i> Generar tikets para mi</label><br>
+                  <button class="btn btn-success btn-sm btn-block" id="registrar" onclick="generarTiketMio()">Generar para mi</button>
+                </div>
+                <div class="col-sm-12 m-0">
+                  <br>
+                  <label for=""><i class="fas fa-ticket-alt"></i> Generar tikets para mi afiliado</label>
+                  <select class="form-control" name="" id="combo">
+                  </select>
+                  <button class="btn btn-primary mt-2 btn-sm btn-block" id="registrar" onclick="generarTiket()">Generar para mi afiliado</button>
+                </div>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+              <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Cambiar Contraseña -->
+      <div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-full-height modal-right modal-notify modal-info" role="document"">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading lead"><strong>Cambio de contraseña</strong>
+              </p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="white-text">×</span>
+              </button>
+            </div>
+            <div class="modal-body" id="">
+              <div class="text-center">
+                <img src="../../img/icons/p-password.png">
+                <p>
+                  <strong>Cambia </strong>la contraseña para mayor seguridad
+                </p>
+              </div>
+              <hr>
+              <div class="row col-sm-12 p-0 m-0">
+                <div class="col-sm-12 m-0" id="dperfil">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="button" class="btn btn-warning" onclick="acPerfil()">Actulizar Datos <i class="fas fa-pencil-alt ml-1"></i></button>
+              <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="contenido">
+      <div class="row col-12" id="row-logo">
+        <div class="col-3 col-md-1" id="col-logo_img">
+          <img src="img/icons/p-home.png" alt="" id="logo-img">
+        </div>
+        <div class="col-8 col-md-2" id="col-logo_titulo">
+          <p id="logo-titulo">Home</p>
+          <p id="logo-subtitulo">/ Mis afiliados</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row col-md-12" id="row-button">
+        <div class="col-12 col-md-2 p-0" id="col-button_button">
+          <button class="btn btn-success" onclick="preVenta()">Preventa de Tiket</button>
+        </div>
+        <div class="col-12 col-md-3" id="col-button_tiket">
+          <span class="ml-4" id="tiket-generado"><i class="fas fa-check-circle"></i> Mis tikets generados : <span class="font-weight-bold" id="preventa">0</span></span>
+        </div>
+        <div class="col-12 col-md-3" id="col-button_tiket">
+          <span class="ml-4" id="tiket-generado"><i class="fas fa-shopping-bag"></i></i> Mis tikets vendidos : <span class="font-weight-bold" id="ventatiket">0</span></span>
+        </div>
+      </div>
+      <div class="row col-12" id="row-lista">
+        <div class="col-md-12 m-0 p-0" id="col-lista">
+          <div class="card text-center" id="col-lista_card">
+            <div class="card-body overflow-auto text-nowrap">
+              <table class="table table-striped">
+                <thead>
+                  <tr> 
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Preventa Tikets</th>
+                    <th scope="col">Tikets Vendidos</th>
+                    <th scope="col">Afiliar</th>
+                    <th scope="col">Generar</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla">
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Registrar afiliados Terceros-->
+        <div class="modal fade" id="afiliarterceros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document"">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="heading lead"><strong>Registrar Afiliado Tercero</strong>
+                </p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="text-center">
+                  <img src="../../img/icons/p-afiliado.png">
+                  <p>
+                    <strong>Registra </strong>a terceros y aumenta tu progreso
+                  </p>
+                </div>
+                <hr>
+                <div class="row col-sm-12 p-0 m-0">
+                  <div class="col-sm-6 m-0">
+                    <label>Nombres</label>
+                    <input type="text" id="afnombre" class="form-control" autocomplete="off">
+                  </div>
+                  <div class="col-sm-6 m-0">
+                    <label>Apellidos</label>
+                    <input type="text" id="afapellido"  class="form-control" autocomplete="off">
+                  </div>
+                </div>
+                <div class="row col-sm-12 p-0 m-0">
+                  <div class="col-sm-6 m-0">
+                    <label>DNI</label>
+                    <input type="number" id="afdni" onkeypress="return validni(this, 8);" class="form-control" autocomplete="off">
+                  </div>
+                  <div class="col-sm-6 m-0">
+                    <label>Celular</label>
+                    <input type="number" id="afcelular" onkeypress="return valicelular(this, 9);" class="form-control" autocomplete="off">
+                  </div>
+                </div>
+                <div class="row col-sm-12 p-0 m-0">
+                  <div class="col-sm-6 m-0">
+                    <label>Correo</label>
+                    <input type="email" id="afcorreo" class="form-control" autocomplete="off">
+                  </div>
+                  <div class="col-sm-6 m-0">
+                    <label>Contraseña</label>
+                    <input type="text" id="afpass" class="form-control" value="123" autocomplete="off" disabled> 
+                  </div>
+                </div>
+              </div>
+              
+              <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary waves-effect waves-light" onclick="RegisAfiliarTerce()" id="registrar" >Guardar
+                  <i class="fa fa-paper-plane ml-1"></i>
+                </a>
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancelar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Generar Ticket para terceros-->
+        <div class="modal fade" id="tiketterceros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="heading lead"><strong>Generar Tiket Para Terceros</strong>
+                </p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="text-center">
+                  <img src="../../img/icons/p-tiket.png">
+                  <p>
+                    <strong>Genera </strong>tikets para terceros y aumenta tu progreso
+                  </p>
+                </div>
+                <hr>
+                <div class="row col-sm-12 p-0 m-0">
+                  <div class="col-sm-12 m-0">
+                    <label for="">Generar tikets para mi afiliado tercero</label>
+                    <select class="form-control" name="" id="combo2">
+                    </select>
+                    <button class="btn btn-primary mt-2 btn-sm btn-block" id="registrar" onclick="generarTikettercero()">Generar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancelar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="js/conexionfirebase.js"></script>
+    <script src="js/app2.js"></script>
+  </body>
+</html>

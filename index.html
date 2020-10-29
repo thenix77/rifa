@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="index.css">
+
+    <title>Comunidad Chupamarca</title>
+    <link rel="icon" type="" href="img/icons/simbolo.png">
+  </head>
+  <body>
+    <div class="container-fluid" id="container1">
+      <div class="row col-md-12" id="nav-s">
+        <div class="col-md-7 col-lg-6" id="nav-s1">
+          <i class="fas fa-check"></i>
+          <span>Huancavelica</span>
+          <i class="fas fa-check"></i>
+          <span>Castrovirreyna</span>
+          <i class="fas fa-check"></i>
+          <span>Comunidad</span>
+        </div>
+        <div class="col-md-5 col-lg-6" id="nav-s2">
+          <a href="https://www.google.com.pe/maps/place/Huancavelica+09001/@-12.7827571,-74.9929764,14z/data=!3m1!4b1!4m5!3m4!1s0x910e0a66a682f4bf:0x55f941338f983a9b!8m2!3d-12.7861978!4d-74.9764024?hl=es-419" target="_blank"><i class="fas fa-map-marker-alt"></i>Ubicación</a>
+          <span>|</span>
+          <a href="https://www.google.com/search?q=chupamarca+turismo&rlz=1C1CHBD_esPE884PE884&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjjnaTH-8vsAhXLI7kGHRipAUQQ_AUoAXoECAQQAw&biw=1366&bih=657" target="_blank"><i class="fas fa-minus-circle"></i>Turismo</a>
+          <span>|</span>
+          <a href=""><i class="fas fa-globe"></i>PE</a>
+        </div>
+      </div>
+      <div class="row col-md-12 p-0" id="nav-p">
+        <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-light col-12">
+          <a class="navbar-brand" href="#">
+            <img src="img/icons/simbolo.png" width="65" height="65" class="d-inline-block align-top" alt="" id="nv-p1_img">
+            &nbsp;&nbsp;
+            <strong id="img-titulo">CHUPAMARCA</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-item nav-link active" href="#"><strong><i class="fas fa-home"></i></strong><span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong>Incio</strong>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#informacion-somos">Quiénes somos</a>
+                  <a class="dropdown-item" href="#informacion-misión">Misión</a>
+                  <a class="dropdown-item" href="#informacion-visión">Visión</a>
+                  <a class="dropdown-item" href="#informacion-objetivos">Objetivos</a>
+                  <a class="dropdown-item" href="documentos/JuntaDiectiva2020-2022.pdf" target="_blank">Junta Directiva</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong>Autoridad Comunal</strong>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Consejo Directivo</a>
+                  <a class="dropdown-item" href="documentos/Estatuto C.C.Chupamarca.pdf" target="_blank">Estatuto</a>
+                  <a class="dropdown-item" href="#presentación">Presentación</a>
+                  <a class="dropdown-item" href="#turismo-comunidad">Actividades</a>
+                  <a class="dropdown-item" href="#conocenos">Conocenos</a>
+                  <a class="dropdown-item" href="#">Agricultura</a>
+                  <a class="dropdown-item" href="#">Ganaderia</a>
+                  <a class="dropdown-item" href="#">Mineria</a>
+                  <a class="dropdown-item" href="#">Turismo</a>
+                  <a class="dropdown-item" href="documentos/RESUMEN HISTORIA DE CHUPAMARCA.pdf" target="_blank">Historia</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong>Autoridad Municipal</strong>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Información</a>
+                  <a class="dropdown-item" href="#">Proyectos</a>
+                  <a class="dropdown-item" href="#">Organigrama</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong>Proyectos</strong>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id='link-evento'>
+                  
+                </div>
+              </li>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-fluid"  id="container2">
+      <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel" data-slide-to="1"></li>
+          <li data-target="#carousel" data-slide-to="2"></li>
+          <li data-target="#carousel" data-slide-to="3"></li>
+          <li data-target="#carousel" data-slide-to="4"></li>
+          <li data-target="#carousel" data-slide-to="5"></li>
+          <li data-target="#carousel" data-slide-to="6"></li>
+          <li data-target="#carousel" data-slide-to="7"></li>
+        </ol>
+        <div class="carousel-inner" id="carousel-inner-1" role="listbox">
+          <div class="carousel-item active">
+            <div class="view">
+              <img id='inicio-imagen1' class="d-block w-100" src="./img/inicio/inicio-imagen1.jpg"
+                alt="First slide">
+              <div class="mask rgba-black-light"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img id='inicio-imagen2' class="d-block w-100" src="./img/inicio/inicio-imagen2.jpg"
+                alt="Second slide">
+              <div class="mask rgba-black-strong"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img id='inicio-imagen3' class="d-block w-100" src="./img/inicio/inicio-imagen3.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img class="d-block w-100" src="./img/inicio/anexo3.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img class="d-block w-100" src="./img/inicio/anexo4.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img class="d-block w-100" src="./img/inicio/anexo5.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img class="d-block w-100" src="./img/inicio/anexo6.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="view">
+              <img class="d-block w-100" src="./img/inicio/anexo7.jpg"
+                alt="Third slide">
+              <div class="mask rgba-black-slight"></div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div class="container" id="items-abajo-carrusel">
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <div class="card-body">
+            <div class="abajo-icon">
+              <i class="fas fa-globe blue-text"></i>
+            </div>
+            <br>
+            <h5 id="abajo_titulo"><strong>Pais</strong></h5>
+            <p id="abajo_contenido">Oficialmente República del Perú, es un país soberano ubicado al oeste de América del Sur.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card-body">
+            <div class="abajo-icon">
+              <i class="fas fa-university blue-text"></i>
+            </div>
+            <br>
+            <h5 id="abajo_titulo"><strong>Departamento</strong></h5>
+            <p id="abajo_contenido">Huancavelica esta situada en la vertiente oriental de la Cordillera de los Andes.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card-body">
+            <div class="abajo-icon">
+              <i class="fas fa-city blue-text"></i>
+            </div>
+            <br>
+            <h5 id="abajo_titulo"><strong>Provincia</strong></h5>
+            <p id="abajo_contenido">Castrovirreyna situada en el occidente del departamento de Huancavelica.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card-body">
+            <div class="abajo-icon">
+              <i class="fas fa-church blue-text"></i>
+            </div>
+            <br>
+            <h5 id="abajo_titulo"><strong>Distrito</strong></h5>
+            <p id="abajo_contenido">Chupamarca es uno de los 13 distritos de la provincia de Castrovirreyna.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="informacion">
+      <div class="row" id="informacion-somos">
+        <div class="col-12 col-md-12">
+          <h5 id="somos-titulo">¿Quiénes somos?</h5>
+          <p id="somos-contenido">Mediante Asamblea Extraordinaria de fecha 06-08-2016, se reconoció oficialmente la conformación del COMITÉ  DE APOYO A LA COMUNIDAD CAMPESINA SANTIAGO DE CHUPAMARCA – RESIDENTES LIMA”, y se autorizó para ejercer funciones en beneficio y progreso de la comunidad, conforme la visión, misión y objetivos establecido por el comité de apoyo.</p>
+        </div>
+      </div>
+      <div class="row mx-auto" id="informacion-vs">
+        <div class="col-12 col-md-6" id="informacion-misión">
+          <div class="card">
+            <div>
+              <i class="fas fa-medal if-logo"></i>
+            </div>
+            <h5 id="informacion-titulo"><strong>Misión</strong></h5>
+            <p id="informacion-contenido">Promover la integración de los hijos residentes en Lima acorde con el estatuto de la comunidad, con la finalidad de apoyar en las diversas gestiones y procesos  en beneficio y progreso de la comunidad.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6" id="informacion-visión">
+          <div class="card">
+            <div>
+              <i class="fas fa-award if-logo"></i>
+            </div>
+            <h5 id="informacion-titulo"><strong>Visión</strong></h5>
+            <p id="informacion-contenido">Apoyar en lograr el saneamiento físico y legal del territorio de la comunidad Santiago de Chupamarca.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="informacion-objetivos">
+        <div class="col-12 col-md-12 text-center">
+          <img class="objetivo-simbolo" src="img/icons/simbolo.png" alt="">
+        </div>
+        <div class="row col-12 p-0" id="col-objetivo">
+          <div class="row col-12 col-md-4 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-check-circle obj-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <a id="objetivo-contenido"><strong id="objetivo-contenido_titulo">Objetivo N° 1 :<br></strong>En lograr el saneamiento físico y legal del territorio de la comunidad Santiago de Chupamarca.</a>
+            </div>
+          </div>
+          <div class="row col-12 col-md-4 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-check-circle obj-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <a id="objetivo-contenido"><strong id="objetivo-contenido_titulo">Objetivo N° 2 :<br></strong>Apoyar en la consecución y prosecución de la gestión de regularización y/o actualización del plano catastral  de la propiedad territorial de la Comunidad en instancias pertinentes.</a>
+            </div>
+          </div>
+          <div class="row col-12 col-md-4 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-check-circle obj-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <a id="objetivo-contenido"><strong id="objetivo-contenido_titulo">Objetivo N° 3 :<br></strong> Apoyar en el seguimiento de la gestión legal frente a terceros seguido por la  C.C. Santiago de Chupamarca.</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container" id="presentación">
+      <hr>
+      <div class="row" id="row-presentación">
+        <div class="col-12 col-md-7" >
+          <h5 id="presentación-titulo"><span id="presentacion-titulo_signo">|</span>Presentación</h5>
+          <h5 id="presentación-subtitulo"><span id="presentacion-titulo_signo">|</span>Comunidad Campesina Santiago de Chupamarca</h5>
+          <p id="presentación-información">Esto es Chupamarca, tierra generosa y bendita!<br>Chupamarca enclavada en la provincia de Castrovirreyna  región Huancavelica reconocida como la tierra de mercurio.Chupamarca con sede situado a 3,325 m.s.n.m. y todo el territorio con altitudes que varían entre 2,850  a 4,700 m.s.n.m. Como vemos resaltan sus ríos: Eugenio, Shahuinto, Colcabamba, Pumahuanto  rodeado con hermosos bosque de quinuales y las cristalinas lagunas Turpo, Huarmicocha, Janchisjocha, Obispo cocha, Tibiacocha,  Huaccerma, Tacracocha y Ñuñunga; que son represadas para dar vida a toda la cuenca del río San Juan y el valle de Chincha.Mientras entretenemos la vista en sus bellos parajes en su flora  y fauna quedamos encantados con sus anexos y centros poblados: Mejorada, Villa Flor,Chancahuasi, Santo Domingo, Huayllay, Colcabamba, Tipicocha y Terciopelo. Así es Chupamarca, terruño incomparable, hospitalario y generoso; en nuestro amplio recorrido, somos testigos de la variedad de productos ecológicos que nos brinda la Pachamama, como primeros productores de la zona resalta; variedad de papa a nivel regional conocida como “Papa Chupamarquina”, así mismo: trigo , cebada, maíz,  arbeja, haba, quinua,  mashua, maca, oca, olluco, alfalfa y variedad de hortalizas. Seguimos ahora con nuestro envidiable paseo y nos damos con la sorpresa de encontrar también  variedades en ganado vacuno, ovino, caprino, hermosas vicuñas, alpacas, llamas, venados,viscachas,cuy, conejos, así mismo la nutritiva y riquísima trucha, así mismos variedad de aves silvestres y  de corral. 
+            </p>
+        </div>
+        <div class="col-12 col-md-5 pt-5 pb-4">
+          <div class="card" id="presentación-card">
+            <div id="presentación-card_titulo">
+              <h5>Comunidad</h5>
+            </div>
+            <div class="card-body" id="presentación-card_img">
+              <div  class="presentacion-inner_img">
+               <img src="img/web/bkg6.jpeg" class="w-100 h-100" id="presentacion-img">
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12">
+          <p id="presentación-información">
+            Vemos también la artesanía con sus tejidos de  frazadas, mantas, chompas, chalinas y mucho más.Que linda es Chupamarca, pueblo hospitalario y turístico habitado por gente humilde, trabajadora y progresista; ahí están las ruinas Pre Inca de Cceccamarca y Tupia, las lagunas represadas  donde se crían las ricas truchas, trasvase de laguna Huarmicocha a Turpo con túnel de 2 Km. El impresionante puente de Chupamarca-Aurahua de doble vía y el bosque de piedra Lihui Lihui; divisamos también a sus Apus guardianes eternos los cerros Auquichanca, Jalla, Altar y Llajapi. Divisamos las cataratas encantadoras, Tolarva y Pumahuanto, que nos da la vista pareciera velos blancos inigualables. Todo esto para organizar paseos de turismo y  de aventura.Este es el orgullo de Huancavelica y de Santiago de Chupamarca, con sus inconfundibles callecitas con escalinatas empedradas, donde parece que el tiempo se detuvo, para admirar la iglesia colonial con su impresionante pareja de torre, reconocido como Patrimonio Cultural de la Nación. Para ver y gozar toda las maravillas de Chupamarca, cuenta con vías de acceso como caminos y trochas carrozables  que circundan todo el territorio en forma de circuito turístico. En este hermoso pueblo se viven las tradiciones y costumbres de antaño, por ejemplo la festividad en  honor al Santo Patrón Santiago Apóstol  y la Virgen Perpeto Socorro.  Estas festividad duran una semana del 23  al 28 de Julio,  es la mas grande de todo el año. Se celebra con actividades religiosas, corridas de toros, procesiones, danzas, conjuntos artísticos, banda de músicos, actividades deportivas y mucho más. En el mes de Diciembre, la fiesta de Navidad, adoración al nacimiento del niño Jesús, donde vemos la competencia de las dos pallas Yaucha y Ccollpa, esta hermosa fiesta dura también una semana del 23 al 27 de Diciembre; en estas fiestas costumbristas participan todo el pueblo, turistas y residentes que retornan del interior del país y del extranjero para  revivir las reuniones ancestrales. De esta manera Santiago de Chupamarca pueblo de campesinos, agricultores y ganaderos considerado como uno de los pueblos con grandes potenciales de recursos naturales del norte de Castrovirreyna,  continúa luchando para el progreso valiéndose de sus recursos propios. Avanzando así a un futuro mejor. Solo nos queda decir  maravillados que Chupamarca es la sucursal del cielo.
+          </p>
+          <a class="btn btn-primary btn-lg" id="presentación-subtitulo" href="documentos/Presentacion-deCCS-Chupamarca.pdf" target="_blank">Leer más <i class="fas fa-angle-double-right"></i></a>
+        </div>
+       </div>
+    </div>
+    <div class="container-fluid" id="turismo-comunidad">
+      <div class="row col-12 mx-auto">
+        <div class="col-md-12">
+          <div id="carrusel-multi_item" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <div class="controls-top mx-auto" id="controles">
+            <a class="btn-floating" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+            <a class="btn-floating" data-slide="next"><i
+                class="fas fa-chevron-right"></i></a>
+            </div>
+            <ol class="carousel-indicators" id="indicadores">
+              <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+              <li data-target="#multi-item-example" data-slide-to="1"></li>
+              <li data-target="#multi-item-example" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                  <div class="row" id='agricultura'>
+                      
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="row" id='mineria'>
+
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row" id='ganaderia'>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="conocenos">
+      <div class="row" id="row-conocenos">
+        <div class="col-12 col-md-7">
+           <h5 id="conocenos-titulo"><span id="conocenos-titulo_signo">|</span>Conocenos</h5>
+           <h5 id="conocenos-subtitulo"><span id="conocenos-titulo_signo">|</span>Comunidad campesina Santiago de Chupamarca</h5>
+            <p id="conocenos-información">
+              Fue considerado como centros poblados en mes de Abril 1,565, por disposición del Virrey Toledo. En la época del Protectorado del General Don José de San Martín, el pueblo de santiago de Chupamarca pertenecía a la provincia de Yauyos  departamento de Lima. Fue creado como distrito de Santiago de Chupamarca por ley de 02-01-1857 de la provincia de Yauyos y ratificado por decreto de 16-02 1866, comprendido de los pueblos de Huamatambo, Chupamarca y Huanaco.Presidente provisorio de la republica: Mariano Ignacio Prado. El 24 de Octubre de 1896. El congreso de la republica peruana ha dado la ley siguiente: <br>Articulo único.- Anexase el distrito de Santiago Chupamarca de la provincia de Yauyos a la provincia de Castrovirreyna del departamento de Huancavelica; y el distrito de Huangascar de la provincia de Castrovirreyna a la de Yauyos del departamento de Lima. Rafael Villanueva presidente del senado. C. de Pierola presidente de la cámara de diputados. Nicolás de Pierola Presidente de la Republica.
+            </p>
+            <h5 id="conocenos-subtitulo"><span id="conocenos-titulo_signo">|</span>Ubicación</h5>
+            <p id="conocenos-información">
+              Santiago de Chupamarca centenario pueblo andino, geográficamente pertenece  a la Región andina Sur Medio del País, ubicado entre las coordenadas: Latitud Sur 13°02’21”  y  Longitud Oeste  75°36’30”; en las nacientes de la cuenca hidrográfica del río Chupamarca y Aurahúa,  en el piso altitudinal conocido como “ Sierra alta” , en altitudes que varían entre los  2,850 y 3,600 m.s.n.m., y la zona de Puna sobrepasa los 4,700 m.s.n.m. Pertenece a la provincia de castrovirreyna,  y a la región de Huancavelica.
+            </p>
+        </div>
+        <div class="col-12 col-md-5 pt-5 pb-3">
+          <div class="card" id="conocenos-card">
+            <div id="conocenos-card_titulo">
+              <h5>Ubicación</h5>
+            </div>
+            <div class="card-body" id="conocenos-card_maps">
+              <div id="map-container-google-1" class="z-depth-1-half map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15532.554033999179!2d-75.3245126257224!3d-13.279283733539268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9111e7e76315bc1b%3A0x8e30d08b4c565031!2sCastrovirreyna%2009725!5e0!3m2!1ses-419!2spe!4v1603749946991!5m2!1ses-419!2spe" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-map-marker-alt cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Capital</h6></span><span id="conocenos-contenido">La sede del distrito está situada a 3,325 m.s.n.m.</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-map cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Extensión Territorial</h6></span><span id="conocenos-contenido">4,000 km2.</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-globe cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Geografía</h6></span><span id="conocenos-contenido">Su territorio es muy accidentado. La cuenca del pacífico: Chupamarca y el de Aurahúa con sus afluentes: Eugenio, shahuinto y Palmadera y la cuenca al Atlántico: el río Terciopelo afluente del río Mantaro.
+              </span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-cloud-sun cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Clima</h6></span><span id="conocenos-contenido">Temperatura Promedio Anual es de  12° C (máxima de  24º C y mínima de  3°, 4 º C).</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-industry cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Indrustria</h6></span><span id="conocenos-contenido">
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fab fa-blackberry cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Textiles</h6></span><span id="conocenos-contenido">Tejidos de frazadas, mantas (lliclas), chompas, etc.</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-mountain cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Mineros</h6></span><span id="conocenos-contenido">Prospectos mineros.</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-fist-raised cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>División Política</h6></span><span id="conocenos-contenido">Tiene 7 anexos y 5 caseríos:<br>Anexo de Mejorada - Anexo de Villaflor - Anexo de Chancahuasi - Anexo de Santo Domingo -  Anexo de Huayllay - Anexo de Colcabamba - Anexo de Tipicocha - Anexo de Terciopelo.
+              </span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-water cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Lagunas</h6></span><span id="conocenos-contenido">Turpo - Ccanchicocha - Obiscocha - Huichinga - Huaccerma - Ñuñunga.</span>
+            </div>
+          </div>
+          <div class="row col-12 col-md-12 m-0 p-2">
+            <div class="col-2 pr-0">
+              <i class="fas fa-hamsa cnc-logo"></i>
+            </div>
+            <div class="col-10 pr-0">
+              <span id="conocenos-contenido_titulo"><h6>Artesanía</h6></span><span id="conocenos-contenido">
+              </span>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="rifa">
+      <div class="row col-12 mx-auto p-0 m-0">
+        <div class="col-12 col-md-8 mx-auto p-0" >
+          <img  id="rifa-publicidad" class="w-100 h-100" alt="">
+        </div>
+        <div class="col-12 col-md-4 mx-auto" id="rifa-login">
+          <div id="card" class="card">
+            <img id="card__img" class="card-img-top" id='img-evento' src="img/web/bkg6.jpeg" alt="Card image cap">
+            <div class="card-body p-3 pb-0">
+              <div class="text-center">
+                <span id="card__body-titulo" class="card-title">Inicia Sesión</span>
+              </div>
+              <br>
+              <input type="text" onkeyup="generaradmin()" name="dni" id="dni" class="form-dni" placeholder="DNI" autocomplete="off" required>
+              <input type="password" name="pass" id="pass" class=" mt-2 form-pass" placeholder="Contraseña" required>
+              <div class="text-center p-0 pt-3">
+                    <div class="form-group m-0" id="card__body-login">
+                  <span id="card__body_ingresar" class="card-title" onclick="login()" style="cursor: pointer;">Ingresar <i class="fas fa-sign-in-alt"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span id="res"></span>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="footer">
+      <footer class="page-footer font-small indigo" id="footer-color">
+        <!--
+        <div class="container text-center text-md-left">
+          <div class="row" id="footer-1">
+            <div class="col-md-3 mx-auto">
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Very long link 1</a>
+                </li>
+                <li>
+                  <a href="#!">Very long link 2</a>
+                </li>
+                <li>
+                  <a href="#!">Very long link 3</a>
+                </li>
+                <li>
+                  <a href="#!">Very long link 4</a>
+                </li>
+              </ul>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-3 mx-auto">
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Link 1</a>
+                </li>
+                <li>
+                  <a href="#!">Link 2</a>
+                </li>
+                <li>
+                  <a href="#!">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!">Link 4</a>
+                </li>
+              </ul>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-3 mx-auto">
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Link 1</a>
+                </li>
+                <li>
+                  <a href="#!">Link 2</a>
+                </li>
+                <li>
+                  <a href="#!">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!">Link 4</a>
+                </li>
+              </ul>
+            </div>
+            <hr class="clearfix w-100 d-md-none">
+            <div class="col-md-3 mx-auto">
+              <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Link 1</a>
+                </li>
+                <li>
+                  <a href="#!">Link 2</a>
+                </li>
+                <li>
+                  <a href="#!">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!">Link 4</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      -->
+        <div class="container-fluid">
+          <ul class="list-unstyled list-inline text-center">
+            <li class="list-inline-item" id="footer-facebook">
+              <a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/Chupamarca-Huancavelica-PER%C3%9A-181625448553928/" target="_blank">
+                <i class="fab fa-facebook-f" style="color:white;"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item" id="footer-twitter">
+              <a class="btn-floating btn-tw mx-1" href="https://twitter.com/grhuancavelica" target="_blank">
+                <i class="fab fa-twitter" style="color:white;"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item" id="footer-youtube">
+              <a class="btn-floating btn-gplus mx-1" href="https://www.youtube.com/results?search_query=chupamarca+peru" target="_blank">
+                <i class="fab fa-youtube" style="color:white;"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item" id="footer-google"> 
+              <a class="btn-floating btn-li mx-1" href="https://es.wikipedia.org/wiki/Chupamarca" target="_blank">
+                <i class="fab fa-google-plus-g" style="color:white;"> </i>
+              </a>
+            </li>
+            <li class="list-inline-item" id="footer-instagram">
+              <a class="btn-floating btn-dribbble mx-1" href="https://www.instagram.com/explore/locations/1030076846/chupamarca-huancavelica-peru/?hl=es-la" target="_blank">
+                <i class="fab fa-instagram" style="color:white;"> </i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-copyright text-center py-3" id="footer-final">© 2020 Copyright : Comunidad de Chupamarca - Huancavelica
+        </div>
+      </footer>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="js/conexionfirebase.js"></script>
+    <script src="js/inicio.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    
+    </script>
+
+  </body>
+</html>
